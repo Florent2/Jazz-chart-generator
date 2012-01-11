@@ -1,24 +1,46 @@
 class MarkovChain
 
-  class FirstStateError < StandardError; end
+  class FirstStatesError < StandardError; end
 
   def initialize(sequence=[])
     @sequence = sequence
-    
-    @next_states = Hash.new { |hash, k| hash[k] = Array.new }
-    @sequence.each_cons(2) do |state, next_state| 
-      @next_states[state] << next_state unless next_state.nil?
-    end
   end
 
-  def generate_new_sequence(first_state)
-    raise FirstStateError if @next_states[first_state].size.zero?
+  def generate_new_sequence(first_state, second_state)
+    next_states = build_next_states_structure
 
-    new_sequence = [first_state]
-    (@sequence.size - 1).times do 
-      new_sequence << @next_states[new_sequence.last].sample
+    raise FirstStatesError if next_states[[first_state, second_state]].size.zero?
+
+    new_sequence = [first_state, second_state]
+    (@sequence.size - 2).times do 
+      new_sequence << next_states[[new_sequence[-2], new_sequence[-1]]].sample
     end
-    new_sequence
+    new_sequence.compact # remove nil elements, might exist if is generated
+                         # a couple of 2 states that do not exist in the
+                         # original sequence
+  end
+
+  private
+  
+  # returns a data structure that lists for each couple of consecutive states
+  # of the sequence the different states which follow them
+  #
+  # resulting example for the sequence F A B A B F A B A
+  # { 
+  #   ["F", "A"] => ["B", "B"],
+  #   ["A", "B"] => ["A", "F", "A"],
+  #   ["B", "A"] => ["B"],
+  #   ["B", "F"] => ["A"]
+  # }
+  
+  def build_next_states_structure
+    next_states = Hash.new { |hash, k| hash[k] = Array.new }
+
+    @sequence.each_cons(3) do |state1, state2, next_state| 
+      next_states[[state1, state2]] << next_state
+    end
+
+    next_states
   end
 
 end
