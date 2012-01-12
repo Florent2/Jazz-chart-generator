@@ -3,18 +3,17 @@ class MusicChartGenerator
   class FirstChordsError < StandardError; end
 
   def initialize(chart=[])
-    @chart = chart
+    @chart                = chart
+    @next_possible_chords = get_next_possible_chords
   end
 
   def get_new_chart(first_chord, second_chord)
-    next_possible_chords = get_next_possible_chords
-
     raise FirstChordsError if \
-      next_possible_chords[[first_chord, second_chord]].size.zero?
+      @next_possible_chords[[first_chord, second_chord]].size.zero?
 
     new_chart = [first_chord, second_chord]
     (@chart.size - 2).times do 
-      new_chart << next_possible_chords[[new_chart[-2], new_chart[-1]]].sample
+      new_chart << @next_possible_chords[[new_chart[-2], new_chart[-1]]].sample
     end
     
     # remove nil elements, might exist if is generated
