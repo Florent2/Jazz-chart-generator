@@ -1,6 +1,6 @@
 class MusicChartGenerator
 
-  class FirstChordsError < StandardError; end
+  FirstChordsError = Class.new StandardError
 
   def initialize(chart=[])
     @chart                = chart
