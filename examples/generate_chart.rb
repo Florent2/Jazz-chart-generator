@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative "./lib/markov_chain"
+require_relative "../lib/markov_chain"
 
 abort "Usage: ./generate_chart.rb chart_file first_chord second_chord" unless ARGV.size == 3
 chart_file   = ARGV[0]

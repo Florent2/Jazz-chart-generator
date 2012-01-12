@@ -23,7 +23,7 @@ course of January 2012.
 
 It requires Ruby 1.9+.
 
-`./generate_chart.rb chart_file first_chord second_chord`
+`examples/generate_chart.rb chart_file first_chord second_chord`
 
 The chart file must be a text file where the chord names are simply separated 
 by one or more spaces. See in the `charts` directory a few examples.
@@ -31,7 +31,7 @@ by one or more spaces. See in the `charts` directory a few examples.
 The first and second chords you choose to start your new chart must be appear 
 consecutively in the initial chart.
 
-Example: `./generate_chart.rb charts/what-a-wonderful-world.chart A- G-7`
+Example: `examples/generate_chart.rb charts/what-a-wonderful-world.chart A- G-7`
 
 ## Running specs
 
