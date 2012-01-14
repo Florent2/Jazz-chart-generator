@@ -31,7 +31,7 @@ by one or more spaces. See in the `charts` directory a few examples.
 The first and second chords you choose to start your new chart must be appear 
 consecutively in the initial chart.
 
-Example: `examples/generate_chart.rb charts/what-a-wonderful-world.chart A- G-7`
+Example: `examples/generate_chart.rb data/charts/what-a-wonderful-world.chart A- G-7`
 
 ## Running specs
 
