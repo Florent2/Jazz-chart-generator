@@ -1,2 +1,3 @@
 require_relative "music_chart_generator/application"
 require_relative "music_chart_generator/chart"
+require_relative "music_chart_generator/display"
