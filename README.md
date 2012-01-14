@@ -35,7 +35,7 @@ Example: `examples/generate_chart.rb data/charts/what-a-wonderful-world.chart A-
 
 ## Running specs
 
-`ruby spec/*`
+`ruby spec/music_chart_generator/*`
 
 ## License
 
