@@ -1,14 +1,8 @@
 module MusicChartGenerator
 
-  class Chart
+  class Chart < Struct.new(:chords)
 
     FirstChordsError = Class.new StandardError
-
-    attr_reader :chords
-
-    def initialize(chords=[])
-      @chords = chords
-    end
 
     def get_new_chart(first_chord, second_chord)
       @next_possible_chords ||= get_next_possible_chords
@@ -18,7 +12,7 @@ consecutively in the initial chart or have no following chord") \
 if @next_possible_chords[[first_chord, second_chord]].size.zero?
 
       new_chords = [first_chord, second_chord]
-      (@chords.size - 2).times do 
+      (chords.size - 2).times do 
         new_chords << @next_possible_chords[[new_chords[-2], new_chords[-1]]].sample
       end
 
@@ -44,7 +38,7 @@ if @next_possible_chords[[first_chord, second_chord]].size.zero?
     def get_next_possible_chords
       next_possible_chords = Hash.new { |hash, k| hash[k] = Array.new }
 
-      @chords.each_cons(3) do |chord1, chord2, next_chord| 
+      chords.each_cons(3) do |chord1, chord2, next_chord| 
         next_possible_chords[[chord1, chord2]] << next_chord
       end
 
