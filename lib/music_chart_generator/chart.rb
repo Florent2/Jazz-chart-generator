@@ -9,16 +9,15 @@ module MusicChartGenerator
 
       raise FirstChordsError.new("Your first chords do not appear \
 consecutively in the initial chart or have no following chord") \
-if @next_possible_chords[[first_chord, second_chord]].size.zero?
+if @next_possible_chords[[first_chord, second_chord]].empty?
 
       new_chords = [first_chord, second_chord]
       (chords.size - 2).times do 
         new_chords << @next_possible_chords[[new_chords[-2], new_chords[-1]]].sample
       end
 
-      # compact removes nil elements, might exist if is generated
-      # a couple of 2 chords that do not exist in the
-      # original sequence
+      # compact removes nil elements, which might exist if is generated
+      # a couple of 2 chords that do not exist in the original sequence
       Chart.new new_chords.compact 
     end
 
