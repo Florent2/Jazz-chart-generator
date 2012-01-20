@@ -2,7 +2,7 @@ module MusicChartGenerator
 
   class Application
 
-    def initialize(argv)
+    def initialize(argv, display = MusicChartGenerator::Display.new)
       raise ArgumentError.new("Usage: ./generate_chart.rb chart_file \
 first_chord second_chord") unless argv.size == 3
 
@@ -10,7 +10,7 @@ first_chord second_chord") unless argv.size == 3
       @first_chord  = argv[1]
       @second_chord = argv[2]
 
-      @display = MusicChartGenerator::Display.new
+      @display = display 
     end
 
     def run
