@@ -4,7 +4,6 @@ module MusicChartGenerator
 
     def initialize(display = MusicChartGenerator::Display.new, chart_file, \
                    first_chord, second_chord)
-
       @display      = display 
       @chart_file   = chart_file
       @first_chord  = first_chord
