@@ -23,17 +23,23 @@ if @next_possible_chords[[first_chord, second_chord]].empty?
 
     private
 
-    # returns a data structure that lists for each couple of consecutive chords
+    # Returns a data structure that lists for each couple of consecutive chords
     # of the chart the different chords which follow them
     #
-    # resulting example for the chart F A B A B F A B A
-    # { 
-    #   ["F", "A"] => ["B", "B"],
-    #   ["A", "B"] => ["A", "F", "A"],
-    #   ["B", "A"] => ["B"],
-    #   ["B", "F"] => ["A"]
-    # }
-
+    # This data structure is used to semi randomly generates new charts.
+    #
+    # Examples
+    #
+    #   chart = MusicChartGenerator::Chart.new %w{F A B A B F A B A}
+    #   chart.send :get_next_possible_chords
+    #   # => { 
+    #     ["F", "A"] => ["B", "B"],
+    #     ["A", "B"] => ["A", "F", "A"],
+    #     ["B", "A"] => ["B"],
+    #     ["B", "F"] => ["A"]
+    #   }
+    #
+    # Returns the data structure
     def get_next_possible_chords
       next_possible_chords = Hash.new { |hash, k| hash[k] = Array.new }
 
