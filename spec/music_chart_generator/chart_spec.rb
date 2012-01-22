@@ -3,7 +3,7 @@ require_relative "../../lib/music_chart_generator"
 
 describe MusicChartGenerator::Chart do
 
-  describe "#get_new_chart" do
+  describe "#transform" do
 
     before do
       @chart = MusicChartGenerator::Chart.new [1, 2, 1, 2, 3]  
@@ -13,7 +13,7 @@ describe MusicChartGenerator::Chart do
 chart" do
       
       before do
-        @new_chart = @chart.get_new_chart 1, 2
+        @new_chart = @chart.transform 1, 2
       end
 
       it "returns a new chart of size between 3 and the original size" do
@@ -35,7 +35,7 @@ chart" do
 in the chart" do
 
       it "raises a FirstChordError exception" do
-        lambda { @chart.get_new_chart(6,7) }.must_raise \
+        lambda { @chart.transform(6,7) }.must_raise \
           MusicChartGenerator::Chart::FirstChordsError
       end
 
