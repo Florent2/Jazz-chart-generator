@@ -12,7 +12,7 @@ module MusicChartGenerator
     def run
       chords = File.foreach(@chart_file).map { |line| line.scan(/\S+/) }.flatten
       new_chart = Chart.new(chords).transform @first_chord, @second_chord
-      @display.render new_chart
+      @display.render new_chart.chords
     end
 
   end

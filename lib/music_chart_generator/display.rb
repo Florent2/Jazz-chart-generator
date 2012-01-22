@@ -6,10 +6,10 @@ module MusicChartGenerator
       @chords_per_line_nb = chords_per_line_nb
     end
 
-    def render(chart)
-      longest_chord_size = chart.chords.map(&:size).max
+    def render(chords)
+      longest_chord_size = chords.map(&:size).max
 
-      chart.chords.each_slice(@chords_per_line_nb) do |chords|
+      chords.each_slice(@chords_per_line_nb) do |chords|
         line_of_chords = chords.map do |chord|
           chord + " " * (longest_chord_size - chord.size)
         end.join " "
