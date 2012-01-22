@@ -26,7 +26,7 @@ describe MusicChartGenerator::Chart do
           [1, 2, 1, 2, 1],
           [1, 2, 3]
         ]
-        possible_generated_charts.must_include @new_chart.chords
+        possible_generated_charts.must_include @new_chart.chords.to_a
       end
 
     end

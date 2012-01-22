@@ -7,7 +7,7 @@ module MusicChartGenerator
     attr_reader :chords
 
     def initialize(chords)
-      @chords = chords
+      @chords = MusicChartGenerator::ChordList.new chords
     end
 
     def transform(first_chord, second_chord)
