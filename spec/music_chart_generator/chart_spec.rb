@@ -9,8 +9,8 @@ describe MusicChartGenerator::Chart do
       @chart = MusicChartGenerator::Chart.new [1, 2, 1, 2, 3]  
     end
 
-    describe "when the first and second states appear consecutively in the \
-chart" do
+    describe "when the first and second states appear consecutively in the " +
+             "chart" do
       
       before do
         @new_chart = @chart.transform 1, 2
@@ -31,8 +31,8 @@ chart" do
 
     end
 
-    describe "when the first and second states do not appear consecutively \
-in the chart" do
+    describe "when the first and second states do not appear consecutively " +
+             "in the chart" do
 
       it "raises a FirstChordError exception" do
         lambda { @chart.transform(6,7) }.must_raise \
