@@ -2,12 +2,13 @@ module MusicChartGenerator
 
   class Application
 
-    def initialize(display = MusicChartGenerator::Display.new, chart_file, \
-                   first_chord, second_chord)
-      @display      = display 
-      @chart_file   = chart_file
-      @first_chord  = first_chord
-      @second_chord = second_chord
+    #def initialize(display = MusicChartGenerator::Display.new, chart_file, \
+                   #first_chord, second_chord)
+    def initialize(params)
+      @display      = params.fetch :display, MusicChartGenerator::Display.new
+      @chart_file   = params.fetch :chart_file
+      @first_chord  = params.fetch :first_chord
+      @second_chord = params.fetch :second_chord
     end
 
     def run
