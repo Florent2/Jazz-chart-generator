@@ -9,10 +9,14 @@ module MusicChartGenerator
       @second_chord = params.fetch :second_chord
     end
 
-    def run
+    def process_chart_file
       chords = File.foreach(@chart_file).map { |line| line.scan(/\S+/) }.flatten
-      new_chart = Chart.new(chords).transform @first_chord, @second_chord
-      @display.render new_chart.chords
+      Chart.new(chords).transform @first_chord, @second_chord
+    end
+
+    def run
+      chart = process_chart_file
+      @display.render chart.chords
     end
 
   end
