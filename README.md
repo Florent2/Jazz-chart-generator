@@ -33,6 +33,15 @@ consecutively in the initial chart.
 
 Example: `examples/generate_chart.rb data/charts/what-a-wonderful-world.chart A- G-7`
 
+### Listening to the result chart
+
+The `examples/hammelin_chart.rb` script uses the 
+[Hammelin](http://rubygems.org/gems/hammelin) gem to play the generated chart.
+
+It requires JRuby.
+
+Example: `ruby --1.9 examples/hammelin_chart.rb data/charts/hammelin.chart F C`
+
 ## Running specs
 
 `ruby spec/music_chart_generator/*`
