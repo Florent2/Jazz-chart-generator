@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
-require 'hammelin'
+require 'rbconfig'
+abort "This script requires JRuby" unless RbConfig::CONFIG["ruby_install_name"] == "jruby"
 
+require 'hammelin'
 require_relative "../lib/music_chart_generator"
 script_name = File.basename __FILE__
 
