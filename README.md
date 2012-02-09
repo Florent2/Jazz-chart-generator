@@ -15,7 +15,7 @@ new chart. More precisely, it uses a second-order Markov chain by considering
 the transitions from two consecutive chords to the next one. Thus it generates 
 more "phrasal" structures than a first-order approach.
 
-This code is written during the 
+This code was written during the 
 [Mendicant University](http://mendicantuniversity.org/) 
 course of January 2012.
 
